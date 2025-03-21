@@ -5,5 +5,7 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.gestionfoyer.entities.Universite;
 
 @Repository
-public interface UniversiteRepository extends JpaRepository<Universite, Long> {
+public interface IUniversiteRepository extends JpaRepository<Universite, Long> {
+    // Additional queries if needed
+    Universite findByNomUniversite(String nomUniversite);
 }

@@ -11,6 +11,7 @@ import java.util.List;
 @ToString
 public class Etudiant {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEtudiant;
 
     private long cin; // Changed from String to long

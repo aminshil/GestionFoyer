@@ -1,11 +1,14 @@
 package tn.esprit.gestionfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor @AllArgsConstructor
 @ToString
 public class Foyer {
@@ -13,16 +16,18 @@ public class Foyer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFoyer;
 
-    @Column(nullable = false)
-    private String nomFoyer; // Updated field name
+    private String nomFoyer;
 
-    @Column(nullable = false)
-    private long capaciteFoyer; // Updated field name
+    private long capaciteFoyer;
 
     @OneToOne
     private Universite universite;
 
+    public void setUniversite(Universite universite) {
+        this.universite = universite;
+    }
 
     @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Bloc> blocs;
 }

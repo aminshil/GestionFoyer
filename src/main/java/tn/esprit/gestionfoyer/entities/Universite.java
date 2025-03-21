@@ -1,5 +1,6 @@
 package tn.esprit.gestionfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,5 +20,6 @@ public class Universite {
     private String adresse;
 
     @OneToOne(mappedBy = "universite") // Reference the field in Foyer
+    @JsonIgnore
     private Foyer foyer;
 }
